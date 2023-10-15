@@ -39,6 +39,7 @@ int _printf(const char *format, ...)
 	va_list args;
 	int j = 0;
     	int i = 0;
+	int found = 0;
 	int count = 0;
 	p fmt[] = {
 		{"c", print_char},
@@ -56,8 +57,21 @@ int _printf(const char *format, ...)
 				if (fmt[j].ch[0] == format[i])
 				{
 					fmt[j].f(args);
+					found = 1;
+					break;
 				}
 				j++;
+			}
+			if (!found && format[i] == '%')
+			{
+				putchar('%');
+				count++;
+			}
+			else
+			{
+				putchar('%');
+				putchar(format[i]);
+				count += 2;
 			}
 		}
 		else
