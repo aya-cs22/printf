@@ -62,17 +62,11 @@ int _printf(const char *format, ...)
 				}
 				j++;
 			}
-			if (!found && format[i] == '%')
-			{
-				putchar('%');
-				count++;
-			}
-			else
-			{
-				putchar('%');
-				putchar(format[i]);
-				count += 2;
-			}
+		if (!found && format[i] == '%')
+		{
+			putchar('%');
+			count++;
+		}
 		}
 		else
 		{
