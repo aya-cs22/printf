@@ -24,6 +24,11 @@ int _printf(const char *format, ...)
 		else
 		{
 			format++;
+			if (*format == '\0')
+			{
+				va_end(list);
+				return (-1);
+			}
 			switch (*format)
 			{
 				case 'c':
