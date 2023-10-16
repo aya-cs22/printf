@@ -75,6 +75,8 @@ int _printstr(char *str)
 {
 	int printed_chars = 0;
 
+	if (str == NULL)
+		str = "(null)";
 	while (*str)
 	{
 		_putchar(*str++);
