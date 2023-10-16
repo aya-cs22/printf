@@ -13,9 +13,7 @@ int _printf(const char *format, ...)
 
 	if (format == NULL)
 		return (-1);
-
 	va_start(list, format);
-
 	while (*format)
 	{
 		if (*format != '%')
@@ -48,9 +46,7 @@ int _printf(const char *format, ...)
 		}
 		format++;
 	}
-
 	va_end(list);
-
 	return (printed_chars);
 }
 
