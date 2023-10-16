@@ -7,7 +7,7 @@ int _putchar(char c);
 
 typedef struct prnt
 {
-	char *ch;
+	char ch;
 	void (*f)(va_list);
 }p;
 
