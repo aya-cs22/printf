@@ -33,6 +33,7 @@ int _printf(const char *format, ...)
 				return (-1);
 			}
 			printed_chars += handle_format_specifier(*format, list);
+		format++;
 		}
 	}
 
