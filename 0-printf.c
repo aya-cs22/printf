@@ -8,7 +8,6 @@
  */
 int _printf(const char *format, ...)
 {
-	int i = 0;
 	int printed_chars = 0;
 	va_list list;
 
@@ -17,7 +16,7 @@ int _printf(const char *format, ...)
 
 	va_start(list, format);
 
-	while (format != NULL && format[i])
+	while (*format)
 	{
 		if (*format != '%')
 		{
@@ -48,7 +47,6 @@ int _printf(const char *format, ...)
 			}
 		}
 		format++;
-	i++;
 	}
 
 	va_end(list);
