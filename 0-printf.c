@@ -1,90 +1,77 @@
 #include "main.h"
-#include <stdio.h>
-#include <stdarg.h>
+#include <stddef.h>
 
 /**
- * print_char - prints a character
- * @args: a list
- * Return: void
+ * _printf - Printf function
+ * @format: format.
+ * Return: Printed chars.
  */
-
-void print_char(va_list args)
-{
-	_putchar(va_arg(args, int));
-
-}
-
-/**
- * print_string - prints a string
- * @args: a list
- * Return: (void)
- */
-void print_string(va_list args)
-{
-	char *ptr;
-
-	ptr = va_arg(args, char *);
-	if (ptr != NULL)
-		fputs(ptr, stdout);
-}
-
-/**
- * print_percent - prints %
- * @args: a list
- * Return: void
- */
-
-void print_percent(va_list args)
-{
-	(void) args;
-
-	_putchar('%');
-}
-/**
- * _printf - produces output according to a format
- * @format: format to print according to
- * Return: number of characters printed
- */
-
 int _printf(const char *format, ...)
 {
-	va_list args;
-	int j = 0;
-	int i = 0;
-	int count = 0;
-	p fmt[] = {
-		{"c", print_char},
-		{"s", print_string},
-		{"%", print_percent},
-	};
+	int printed_chars = 0;
+	va_list list;
 
-	va_start(args, format);
 	if (format == NULL)
 		return (-1);
-	while (format != NULL && format[i])
+
+	va_start(list, format);
+
+	while (*format)
 	{
-		if (format[i] == '%')
+		if (*format != '%')
 		{
-			if (format [i + 1] == '\0')
-				return (-1);
-			i++;
-			j = 0;
-			while (j < 3)
-			{
-				if (fmt[j].ch[0] == format[i])
-				{
-					fmt[j].f(args);
-				}
-			j++;
-			}
+			_putchar(*format);
+			printed_chars++;
 		}
 		else
 		{
-			_putchar(format[i]);
-			count++;
+			format++;
+			switch (*format)
+			{
+				case 'c':
+					_putchar(va_arg(list, int));
+					printed_chars++;
+					break;
+				case 's':
+					printed_chars += _printstr(va_arg(list, char *));
+					break;
+				case '%':
+					_putchar('%');
+					printed_chars++;
+					break;
+				default:
+					_putchar('%');
+					_putchar(*format);
+					printed_chars += 2;
+					break;
+			}
 		}
-	i++;
+		format++;
 	}
-	va_end(args);
-	return (count);
+
+	va_end(list);
+
+	return (printed_chars);
+}
+
+/**
+ * _printstr - Prints a string
+ * @str: String to print
+ * Return: Number of characters printed
+ */
+int _printstr(char *str)
+{
+	int printed_chars = 0;
+
+	if (str == NULL)
+		str = "(null)";
+
+	while (*str)
+	{
+		_putchar(*str);
+		printed_chars++;
+		str++;
+	}
+
+	return (printed_chars);
 }

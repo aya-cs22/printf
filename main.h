@@ -11,4 +11,6 @@ typedef struct prnt
 	void (*f)(va_list);
 }p;
 
+int _printstr(char *str);
+
 #endif
