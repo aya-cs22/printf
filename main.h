@@ -4,6 +4,7 @@
 
 int _printf(const char *format, ...);
 int _putchar(char c);
+int _printint(int num);
 
 /**
  * struct prnt - a struct that deals with a specifier
