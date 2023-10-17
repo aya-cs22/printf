@@ -14,7 +14,6 @@ int _printint(int num)
 	if (num == 0)
 	{
 		_putchar('0');
-		printed_chars++;
 		return (printed_chars);
 	}
 	if (num < 0)
