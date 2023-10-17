@@ -21,11 +21,11 @@ int _printint(int num)
 	{
 		_putchar('-');
 		printed_chars++;
-		num = -num;
+		num = -(num);
 	}
 	if (num >= 10)
-		printed_chars += _printint(num / 10);
-	_putchar('0' + (num % 10));
+		printed_chars += _printint((num) / 10);
+	_putchar('0' + ((num) % 10));
 	printed_chars++;
 	return (printed_chars);
 }
