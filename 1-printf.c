@@ -11,11 +11,22 @@ int _printint(int num)
 {
 	int printed_chars = 0;
 
+	if (num == 0)
+	{
+		_putchar('0');
+		return (1);
+	}
 	if (num < 0)
 	{
 		_putchar('-');
 		printed_chars++;
 		num = -num;
+	}
+	if (num == 0)
+	{
+		_putchar('0');
+		printed_chars++;
+		return (printed_chars);
 	}
 	if (num / 10)
 		printed_chars += _printint(num / 10);
