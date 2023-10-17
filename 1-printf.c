@@ -10,9 +10,6 @@
 int _printint(int num)
 {
 	int printed_chars = 0;
-	char buffer[20];
-	int index = 0;
-	int i;
 
 	if (num == 0)
 	{
@@ -26,15 +23,9 @@ int _printint(int num)
 		printed_chars++;
 		num = -num;
 	}
-	while (num > 0)
-	{
-		buffer[index++] = '0' + (num % 10);
-		num /= 10;
-	}
-	for (i = index - 1; i >= 0; i--)
-	{
-		_putchar(buffer[i]);
-		printed_chars++;
-	}
+	if (num >= 10)
+		printed_chars += _printint(num / 10);
+	_putchar('0' + (num % 10));
+	printed_chars++;
 	return (printed_chars);
 }
