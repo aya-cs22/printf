@@ -9,6 +9,8 @@
  */
 int main(void)
 {
+    _printf("%b\n", 98);
+}
     int len;
     int len2;
     unsigned int ui;

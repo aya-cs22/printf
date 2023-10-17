@@ -21,5 +21,6 @@ typedef struct prnt
 
 int _printstr(char *str);
 int handle_format_specifier(char specifier, va_list list);
+int _printbin(unsigned int num);
 
 #endif

@@ -59,6 +59,8 @@ int handle_format_specifier(char specifier, va_list list)
 		case '%':
 			_putchar('%');
 			return (1);
+		case 'b':
+			return (_printbin(va_arg(list, unsigned int)));
 		case 'd':
 		case 'i':
 			return (_printint(va_arg(list, int)));
