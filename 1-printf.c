@@ -23,13 +23,7 @@ int _printint(int num)
 		printed_chars++;
 		num = -num;
 	}
-	if (num == 0)
-	{
-		_putchar('0');
-		printed_chars++;
-		return (printed_chars);
-	}
-	if (num / 10)
+	if (num >= 10)
 		printed_chars += _printint(num / 10);
 	_putchar('0' + (num % 10));
 	printed_chars++;
