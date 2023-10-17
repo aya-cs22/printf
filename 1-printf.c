@@ -1,6 +1,7 @@
 #include "main.h"
 #include <stddef.h>
 #include <stdio.h>
+#include <limits.h>
 
 /**
  * _printint - Prints an integer
@@ -16,6 +17,11 @@ int _printint(int num)
 		_putchar('0');
 		printed_chars++;
 		return (1);
+	}
+	if (num == INT_MIN)
+	{
+		printed_chars += _printstr("-2147483648");
+		return (printed_chars);
 	}
 	if (num < 0)
 	{
